@@ -1,0 +1,78 @@
+import express from "express"
+import cors from "cors"
+import mongoose from "mongoose"
+
+const app=express();
+const PORT=3000;
+
+app.use(express.json());
+app.use(cors());
+mongoose.connect("mongodb://localhost:27017/express")
+.then(()=>{
+    console.log("MongoDb Connected Successfully")
+})
+.catch((err)=>{
+    console.log("Error Occured")
+})
+
+const user=new mongoose.Schema({
+    userName:{
+        type:mongoose.Schema.Types.String,
+        Required:true
+    },
+    phoneNumber:{
+        type:mongoose.Schema.Types.String,
+        required:true,
+        unique:true
+    },
+    address:{
+        type:mongoose.Schema.Types.String,
+        
+    },
+    product:{
+        type:mongoose.Schema.Types.String,
+        required:true
+    },
+    amount:{
+        type:mongoose.Schema.Types.Number,
+        required:true
+    }
+
+})
+
+const users=mongoose.model("users",user);
+
+app.get("/users",async(req,res)=>{
+    const datas=await users.find();
+    res.json(datas)
+    
+})
+app.post("/users",async(req,res)=>{
+    const {body}=req;
+    const datas=new users(body);
+    try{
+        await datas.save();
+        return res.status(200).send(datas);
+}
+    catch(err){
+        console.log(err);
+        return res.status(400).send({msg:"bad data entry please check it"})
+    }
+})
+
+app.delete("/users/:id",async(req,res)=>{
+    try{
+        const id=req.params.id;
+        console.log(id)
+        await users.findByIdAndDelete(id);
+
+    }
+    catch(err){
+        console.log(err)
+    }
+})
+
+app.listen(PORT,()=>{
+    console.log(`App is Listening to the Server ${PORT} `)
+})
+
