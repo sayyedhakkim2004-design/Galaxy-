@@ -8,7 +8,7 @@ function Manage(){
     const[data,setData]=useState([]);
     
     useEffect(()=>{
-        fetch(`${import.meta.env.VITE_API_URL}/users`)
+        fetch(`${import.meta.env.VITE_API_URL}`)
         .then((response)=> response.json())
         .then((response)=> setData(response))
         .catch((err)=> console.log(err))
