@@ -9,8 +9,8 @@ dotenv.config()
 
 app.use(express.json());
 app.use(cors());
-console.log("mongodb:",process.env.MONGO_URL)
-mongoose.connect(process.env.MONGO_URL)
+console.log("mongodb:",process.env.MONGO_PUBLIC_URL)
+mongoose.connect(process.env.MONGO_PUBLIC_URL)
 .then(()=>{
     console.log("MongoDb Connected Successfully")
 })
