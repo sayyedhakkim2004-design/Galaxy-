@@ -46,9 +46,10 @@ const user=new mongoose.Schema({
 
 const users=mongoose.model("users",user);
 
-app.get("/users",async(req,res)=>{
+app.get("/",async(req,res)=>{
     const datas=await users.find();
     res.json(datas)
+    
     
 })
 app.post("/users",async(req,res)=>{
