@@ -12,7 +12,8 @@ mongoose.connect("mongodb://localhost:27017/express")
     console.log("MongoDb Connected Successfully")
 })
 .catch((err)=>{
-    console.log("Error Occured")
+    console.log(err);
+    console.log("Error Occured",err.message)
 })
 
 const user=new mongoose.Schema({
