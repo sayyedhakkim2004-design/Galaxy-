@@ -8,7 +8,7 @@ function Manage(){
     const[data,setData]=useState([]);
     
     useEffect(()=>{
-        fetch("`${import.meta.env.VITE_API_URL}/users`")
+        fetch(`${import.meta.env.VITE_API_URL}/users`)
         .then((response)=> response.json())
         .then((response)=> setData(response))
         .catch((err)=> console.log(err))
@@ -16,7 +16,7 @@ function Manage(){
 
     async function deleteData(_id){
         try{
-            await fetch(`http://localhost:3000/users/${_id}`,{
+            await fetch(`${import.meta.env.VITE_API_URL}/users/${_id}`,{
                 method:"DELETE"
             })
             setData(data.filter((datas)=> datas._id !==_id));
