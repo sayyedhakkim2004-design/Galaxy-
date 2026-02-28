@@ -15,7 +15,6 @@ app.use(cors({
   credentials: true
 }));
 
-app.options("*", cors());
 
 
 const mongoURI = process.env.MONGO_PUBLIC_URL;
