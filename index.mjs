@@ -3,14 +3,20 @@ import cors from "cors"
 import mongoose from "mongoose"
 import dotenv from "dotenv"
 
+dotenv.config();
 const app=express();
 const PORT=process.env.PORT || 3000;
-dotenv.config()
-
 app.use(express.json());
 app.use(cors());
-console.log("mongodb:",process.env.MONGO_PUBLIC_URL)
-mongoose.connect(process.env.MONGO_PUBLIC_URL)
+
+
+const mongoURI = process.env.MONGO_PUBLIC_URL;
+
+if (!mongoURI) {
+    console.error("Mongo URI is NOT defined in .env");
+    process.exit(1);
+}
+mongoose.connect(mongoURI)
 .then(()=>{
     console.log("MongoDb Connected Successfully")
 })
@@ -22,7 +28,7 @@ mongoose.connect(process.env.MONGO_PUBLIC_URL)
 const user=new mongoose.Schema({
     userName:{
         type:mongoose.Schema.Types.String,
-        Required:true
+        required:true
     },
     phoneNumber:{
         type:mongoose.Schema.Types.String,
@@ -47,9 +53,13 @@ const user=new mongoose.Schema({
 const users=mongoose.model("users",user);
 
 app.get("/",async(req,res)=>{
-    const datas=await users.find();
-    res.json(datas)
-    
+    try {
+        const datas = await users.find();
+        res.json(datas);
+    } catch (err) {
+        res.status(500).json({ message: "Server Error" });
+    }
+
     
 })
 app.post("/users",async(req,res)=>{
@@ -70,10 +80,13 @@ app.delete("/users/:id",async(req,res)=>{
         const id=req.params.id;
         console.log(id)
         await users.findByIdAndDelete(id);
+        res.status(201).json({message:"deleted successfully"});
 
     }
     catch(err){
         console.log(err)
+        res.status(400).json({message:"delete failed"})
+
     }
 })
 
