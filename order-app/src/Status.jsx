@@ -112,7 +112,8 @@ function Manage(){
 </div>
 
 <div>
- <p className="text-center font-bold m-5 text-2xl">Loading... Please Wait... or Contact HAKKIM</p></div>
+ <p className="text-center font-bold m-5 text-2xl">Loading... Please Wait... or Contact HAKKIM </p>
+ </div>
 
 </>
             )
