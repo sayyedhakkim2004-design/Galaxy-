@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import halal from "./assets/halal.png"
 import { Link } from "react-router-dom";
-import "./status.css"
+import "./Status.css"
 
 function Manage(){
 
