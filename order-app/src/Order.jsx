@@ -27,7 +27,7 @@ function Order(){
       async function handle(e){
         e.preventDefault(); 
         try{
-             const inserData=await fetch(`${import.meta.env.VITE_API_URL}/users`,{
+             const inserData=await fetch(`${import.meta.env.VITE_API_URL}users`,{
             method:"POST",
             headers:{
                 "content-type":"application/json"
