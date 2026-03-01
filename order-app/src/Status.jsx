@@ -16,7 +16,7 @@ function Manage(){
 
     async function deleteData(_id){
         try{
-            await fetch(`${import.meta.env.VITE_API_URL}users/${_id}`,{
+            await fetch(`${import.meta.env.VITE_API_URL}/users/${_id}`,{
                 method:"DELETE"
             })
             setData(data.filter((datas)=> datas._id !==_id));
