@@ -125,7 +125,7 @@
   border-radius: 14px;
   box-shadow: 0 10px 30px rgba(0,0,0,0.08);
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 1fr 1fr;
   gap: 20px 25px;
   font-family: 'Segoe UI', sans-serif;
 }
@@ -133,6 +133,7 @@
 .order-form button {
   grid-column: span 2;
 }
+
 .form-group {
   display: flex;
   flex-direction: column;
@@ -152,13 +153,19 @@
   transition: all 0.3s ease;
 }
 .form-group input:focus,
-.form-group select:focus {
+.form-group select:focus
+ {
   border-color: #ef4444;
   box-shadow: 0 0 0 3px rgba(239,68,68,0.15);
   outline: none;
 }
-.order-form .form-group:nth-child(3)
-  { grid-column: span 2; }
+.form-group input:hover,
+.form-group select:hover{
+   border-color: #8044ef;
+  box-shadow: 0 0 0 3px rgba(239,68,68,0.15);
+  outline: none;
+}
+
   
 .alert-btn {
   padding: 1.3em 3em;

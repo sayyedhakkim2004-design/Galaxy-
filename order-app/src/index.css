@@ -19,9 +19,6 @@ body {
   min-width: 80%;
  }
 
-
-
-
  footer{
   display: flex;
   flex-direction: column;
@@ -41,14 +38,7 @@ body {
  min-width: 100%;
 
  }
- .order-form {
-    grid-template-columns: 1fr;
-    padding: 20px;
-  }
 
-  .order-form .form-group:nth-child(3) {
-    grid-column: span 1;
-  }
   .header_img,.header_desc{
     display: none;
   }
@@ -80,7 +70,19 @@ body {
     align-items: flex-start;
     gap: 10px;
   }
-  
-  
+  .order-form {
+
+  display: grid;
+  grid-template-rows: 2fr;
+  gap: 20px 25px;
+  font-family: 'Segoe UI', sans-serif;
+ max-width: 50%;
 }
+.order-form .form-group:nth-child(3) {
+  grid-column: 1;
+  max-width: 20%;
+}
+
+}
+
   

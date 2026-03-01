@@ -12,7 +12,8 @@ function Manage(){
         .then((response)=> response.json())
         .then((response)=> setData(response))
         .catch((err)=> console.log(err))
-    },[]);
+        
+    },[data]);
 
     async function deleteData(_id){
         try{
