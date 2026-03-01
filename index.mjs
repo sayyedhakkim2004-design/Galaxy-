@@ -17,7 +17,7 @@ app.use(cors({
 
 
 
-const mongoURI = process.env.MONGO_PUBLIC_URL;
+const mongoURI = process.env.MONGO_URL;
 
 if (!mongoURI) {
     console.error("Mongo URI is NOT defined in .env");
