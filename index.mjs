@@ -9,7 +9,7 @@ const PORT=process.env.PORT || 3000;
 app.use(express.json());
 
 app.use(cors({
-  origin: "https://hakkim.vercel.app",
+  origin: "https://ushman-blond.vercel.app",
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"],
   credentials: true
