@@ -17,12 +17,15 @@ const router=createBrowserRouter([
     <Order />
     <Footer />
        </>
-    ) ,
-    errorElement:<NotFound />
+    ) 
   },
   {
     path:'/admin',
     element: <Manage />
+  },
+  {
+    path:'*',
+    element: <NotFound />
   }
   
   
