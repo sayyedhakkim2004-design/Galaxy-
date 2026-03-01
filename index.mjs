@@ -9,7 +9,7 @@ const PORT=process.env.PORT || 3000;
 app.use(express.json());
 
 app.use(cors({
-  origin: "https://marzook.vercel.app",
+  origin: "https://hakkim.vercel.app/",
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"],
   credentials: true
@@ -93,6 +93,7 @@ app.delete("/users/:id",async(req,res)=>{
     catch(err){
         console.log(err)
         res.status(400).json({message:"delete failed"})
+        
 
     }
 })
